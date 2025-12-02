@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eGov HCM Training - ITN Mass Campaign Configuration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            font-family: 'Oswald', Arial, sans-serif;
+            color: #000000;
+            font-weight: 700;
+            padding: 20px;
+        }
+
+        .page-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* HEADER */
+        .page-header {
+            background-color: #004080;
+            color: #ffffff;
+            padding: 25px 30px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .logo-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 15px;
+        }
+
+        .logo-box {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-box img {
+            width: 100px;
+            height: auto;
+            border-radius: 6px;
+        }
+
+        .page-header h3 {
+            margin: 12px 0 5px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .page-header .tagline {
+            margin: 0;
+            font-size: 10px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .page-header h1 {
+            margin: 20px 0 10px;
+            font-size: 22px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .page-header .subtitle {
+            font-size: 14px;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        /* PROGRESS BAR */
+        .progress-container {
+            background: #ffffff;
+            border: 2px solid #004080;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            background: #f8f9fa;
+            height: 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            border: 2px solid #004080;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #004080, #0056b3);
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: #000000;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        /* CONTENT CARD */
+        .content-card {
+            border: 4px double #004080;
+            border-radius: 12px;
+            padding: 12px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+            min-height: 500px;
+        }
+
+        .content-inner {
+            padding: 30px;
+        }
+
+        /* SECTION HEADER */
+        .section-header {
+            background-color: #004080;
+            color: #ffffff;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-number {
+            background: #ffffff;
+            color: #004080;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* SECTION CONTENT */
+        .section-content {
+            display: none;
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        .section-instruction {
+            font-size: 14px;
+            color: #000000;
+            font-weight: 700;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* IMAGE CONTAINER */
+        .image-container {
+            background: #f8f9fa;
+            border: 2px solid #004080;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* TIP BOX */
+        .tip-box {
+            background: #fff8e1;
+            border: 2px solid #ffc107;
+            border-left: 6px solid #ffc107;
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .tip-label {
+            color: #b8860b;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .tip-text {
+            color: #000000;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        /* TABLE OF CONTENTS */
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .toc-item {
+            padding: 12px 15px;
+            background: #f8f9fa;
+            border: 2px solid #004080;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .toc-item:hover {
+            background: #e7f3ff;
+            transform: translateY(-2px);
+        }
+
+        .toc-number {
+            background: #004080;
+            color: #ffffff;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .toc-text {
+            font-size: 12px;
+            color: #000000;
+            font-weight: 700;
+        }
+
+        /* NAVIGATION BUTTONS */
+        .navigation-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn-nav {
+            flex: 1;
+            padding: 14px 24px;
+            border: 2px solid #004080;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: 'Oswald', Arial, sans-serif;
+            min-width: 120px;
+            transition: all 0.2s;
+        }
+
+        .btn-back {
+            background: #ffffff;
+            color: #004080;
+        }
+
+        .btn-back:hover:not(:disabled) {
+            background: #004080;
+            color: #ffffff;
+        }
+
+        .btn-back:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-next {
+            background: #004080;
+            color: #ffffff;
+        }
+
+        .btn-next:hover {
+            background: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .btn-toc {
+            background: #ffc107;
+            color: #000000;
+            border-color: #ffc107;
+        }
+
+        .btn-toc:hover {
+            background: #e0a800;
+            border-color: #e0a800;
+        }
+
+        /* FOOTER */
+        .page-footer {
+            background-color: #004080;
+            color: #ffffff;
+            padding: 20px 30px;
+            text-align: center;
+            font-size: 13px;
+            line-height: 1.7;
+            font-weight: 700;
+        }
+
+        .page-footer p {
+            margin: 6px 0 0;
+            font-size: 12px;
+            color: #ffffff;
+        }
+
+        /* STEP INDICATOR */
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .step-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e9ecef;
+            border: 2px solid #004080;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .step-dot:hover {
+            background: #e7f3ff;
+        }
+
+        .step-dot.active {
+            background: #004080;
+        }
+
+        .step-dot.completed {
+            background: #28a745;
+            border-color: #28a745;
+        }
+
+        /* PRINT STYLES */
+        @media print {
+            body {
+                padding: 0;
+            }
+            .navigation-buttons,
+            .step-indicator {
+                display: none;
+            }
+            .section-content {
+                display: block !important;
+                page-break-after: always;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .content-inner {
+                padding: 20px;
+            }
+            .logo-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .navigation-buttons {
+                flex-direction: column;
+            }
+            .btn-nav {
+                width: 100%;
+            }
+            .toc-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- HEADER -->
+        <div class="page-header">
+            <div class="logo-row">
+                <div class="logo-box">
+                    <img src="https://github.com/mohamedsillahkanu/gdp-dashboard-2/raw/6c7463b0d5c3be150aafae695a4bcbbd8aeb1499/ICF-SL.jpg" alt="ICF-SL Logo">
+                </div>
+                <div class="logo-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/WHO_logo.svg/200px-WHO_logo.svg.png" alt="WHO Logo">
+                </div>
+            </div>
+            <h3>Informatics Consultancy Firm-Sierra Leone<br>(ICF-SL)</h3>
+            <p class="tagline"><em>Driving Data-Driven Solutions for Health and Development</em></p>
+            <h1>eGov HCM TRAINING GUIDE</h1>
+            <p class="subtitle">Configuration of ITN Mass Campaign</p>
+            <p class="subtitle" style="font-size: 11px; margin-top: 5px;">Step-by-Step Training Manual</p>
+        </div>
+
+        <!-- PROGRESS BAR -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+            <div class="progress-text" id="progressText">STEP 0 OF 25</div>
+        </div>
+
+        <!-- STEP INDICATOR -->
+        <div class="step-indicator" id="stepIndicator"></div>
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+            <div class="content-inner">
+                
+                <!-- TABLE OF CONTENTS (Section 0) -->
+                <div class="section-content active" id="section-0">
+                    <div class="section-header">
+                        <span class="section-number">📋</span>
+                        <span class="section-title">TABLE OF CONTENTS</span>
+                    </div>
+                    <p class="section-instruction">Welcome to the eGov HCM Training Guide for ITN Mass Campaign Configuration. This guide contains 25 steps to help you configure the system. Click on any step below to jump directly, or use the NEXT button to start from the beginning.</p>
+                    
+                    <div class="toc-grid">
+                        <div class="toc-item" onclick="goToSection(1)"><span class="toc-number">1</span><span class="toc-text">Introduction to eGov HCM</span></div>
+                        <div class="toc-item" onclick="goToSection(2)"><span class="toc-number">2</span><span class="toc-text">System Requirements</span></div>
+                        <div class="toc-item" onclick="goToSection(3)"><span class="toc-number">3</span><span class="toc-text">Logging In</span></div>
+                        <div class="toc-item" onclick="goToSection(4)"><span class="toc-number">4</span><span class="toc-text">Dashboard Navigation</span></div>
+                        <div class="toc-item" onclick="goToSection(5)"><span class="toc-number">5</span><span class="toc-text">Creating a Campaign</span></div>
+                        <div class="toc-item" onclick="goToSection(6)"><span class="toc-number">6</span><span class="toc-text">Campaign Details</span></div>
+                        <div class="toc-item" onclick="goToSection(7)"><span class="toc-number">7</span><span class="toc-text">Campaign Boundaries</span></div>
+                        <div class="toc-item" onclick="goToSection(8)"><span class="toc-number">8</span><span class="toc-text">Target Population</span></div>
+                        <div class="toc-item" onclick="goToSection(9)"><span class="toc-number">9</span><span class="toc-text">Registration Points</span></div>
+                        <div class="toc-item" onclick="goToSection(10)"><span class="toc-number">10</span><span class="toc-text">Distribution Sites</span></div>
+                        <div class="toc-item" onclick="goToSection(11)"><span class="toc-number">11</span><span class="toc-text">Stock Management</span></div>
+                        <div class="toc-item" onclick="goToSection(12)"><span class="toc-number">12</span><span class="toc-text">User Accounts</span></div>
+                        <div class="toc-item" onclick="goToSection(13)"><span class="toc-number">13</span><span class="toc-text">User Roles</span></div>
+                        <div class="toc-item" onclick="goToSection(14)"><span class="toc-number">14</span><span class="toc-text">Mobile App Settings</span></div>
+                        <div class="toc-item" onclick="goToSection(15)"><span class="toc-number">15</span><span class="toc-text">Offline Sync</span></div>
+                        <div class="toc-item" onclick="goToSection(16)"><span class="toc-number">16</span><span class="toc-text">Beneficiary Registration</span></div>
+                        <div class="toc-item" onclick="goToSection(17)"><span class="toc-number">17</span><span class="toc-text">Household Targeting</span></div>
+                        <div class="toc-item" onclick="goToSection(18)"><span class="toc-number">18</span><span class="toc-text">ITN Allocation Rules</span></div>
+                        <div class="toc-item" onclick="goToSection(19)"><span class="toc-number">19</span><span class="toc-text">Distribution Workflow</span></div>
+                        <div class="toc-item" onclick="goToSection(20)"><span class="toc-number">20</span><span class="toc-text">Reports & Dashboards</span></div>
+                        <div class="toc-item" onclick="goToSection(21)"><span class="toc-number">21</span><span class="toc-text">SMS Notifications</span></div>
+                        <div class="toc-item" onclick="goToSection(22)"><span class="toc-number">22</span><span class="toc-text">Quality Assurance</span></div>
+                        <div class="toc-item" onclick="goToSection(23)"><span class="toc-number">23</span><span class="toc-text">Testing</span></div>
+                        <div class="toc-item" onclick="goToSection(24)"><span class="toc-number">24</span><span class="toc-text">Go-Live Checklist</span></div>
+                        <div class="toc-item" onclick="goToSection(25)"><span class="toc-number">25</span><span class="toc-text">Troubleshooting</span></div>
+                    </div>
+
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-next" onclick="goToSection(1)">START TRAINING →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 1 -->
+                <div class="section-content" id="section-1">
+                    <div class="section-header">
+                        <span class="section-number">1</span>
+                        <span class="section-title">INTRODUCTION TO eGov HCM</span>
+                    </div>
+                    <p class="section-instruction">Begin by understanding the eGov Health Campaign Management (HCM) platform. This system is designed to support health campaigns including ITN distribution, vaccination drives, and mass drug administration. The platform integrates with DHIS2 for reporting and provides mobile applications for field data collection.</p>
+                    <div class="image-container">
+                        <img src="Step 1.png" alt="Step 1 - Introduction to eGov HCM">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Familiarize yourself with the official eGov HCM documentation available at the help center before starting configuration.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" disabled>← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(2)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 2 -->
+                <div class="section-content" id="section-2">
+                    <div class="section-header">
+                        <span class="section-number">2</span>
+                        <span class="section-title">SYSTEM REQUIREMENTS & ACCESS</span>
+                    </div>
+                    <p class="section-instruction">Verify that your system meets the minimum requirements: Modern web browser (Chrome, Firefox, or Edge), stable internet connection (minimum 2 Mbps), and administrator credentials. Clear your browser cache before accessing the system for the first time.</p>
+                    <div class="image-container">
+                        <img src="Step 2.png" alt="Step 2 - System Requirements">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Chrome browser is recommended for optimal performance with the eGov HCM platform.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(1)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(3)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 3 -->
+                <div class="section-content" id="section-3">
+                    <div class="section-header">
+                        <span class="section-number">3</span>
+                        <span class="section-title">LOGGING INTO THE eGov HCM PLATFORM</span>
+                    </div>
+                    <p class="section-instruction">Navigate to the eGov HCM login page. Enter your administrator username and password. If this is your first login, you will be prompted to change your password. Use a strong password with at least 12 characters including uppercase, lowercase, numbers, and special characters.</p>
+                    <div class="image-container">
+                        <img src="Step 3.png" alt="Step 3 - Logging In">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Enable two-factor authentication (2FA) for enhanced security on administrator accounts.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(2)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(4)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 4 -->
+                <div class="section-content" id="section-4">
+                    <div class="section-header">
+                        <span class="section-number">4</span>
+                        <span class="section-title">NAVIGATING THE DASHBOARD</span>
+                    </div>
+                    <p class="section-instruction">After successful login, you will see the main dashboard. The dashboard displays: Campaign overview widgets, Quick action buttons, Recent activity feed, and System notifications. Explore each section to familiarize yourself with the interface layout.</p>
+                    <div class="image-container">
+                        <img src="Step 4.png" alt="Step 4 - Dashboard Navigation">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Customize your dashboard by dragging and dropping widgets to prioritize the information most relevant to your role.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(3)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(5)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 5 -->
+                <div class="section-content" id="section-5">
+                    <div class="section-header">
+                        <span class="section-number">5</span>
+                        <span class="section-title">CREATING A NEW CAMPAIGN</span>
+                    </div>
+                    <p class="section-instruction">From the main menu, click on 'Campaigns' then 'Create New Campaign'. Select 'ITN Mass Distribution' as the campaign type. Enter a unique campaign name following the naming convention: [Region]_ITN_[Year]_[Quarter] (e.g., Western_ITN_2025_Q1).</p>
+                    <div class="image-container">
+                        <img src="Step 5.png" alt="Step 5 - Creating a Campaign">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Use consistent naming conventions across all campaigns to make searching and reporting easier.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(4)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(6)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 6 -->
+                <div class="section-content" id="section-6">
+                    <div class="section-header">
+                        <span class="section-number">6</span>
+                        <span class="section-title">CONFIGURING CAMPAIGN DETAILS</span>
+                    </div>
+                    <p class="section-instruction">Complete the campaign details form: Campaign Name, Description, Start Date, End Date, Target Coverage (%), and Campaign Manager. Set the campaign status to 'Planning' initially. Add campaign objectives and key performance indicators (KPIs).</p>
+                    <div class="image-container">
+                        <img src="Step 6.png" alt="Step 6 - Campaign Details">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Set realistic target coverage based on historical data from previous campaigns in the region.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(5)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(7)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 7 -->
+                <div class="section-content" id="section-7">
+                    <div class="section-header">
+                        <span class="section-number">7</span>
+                        <span class="section-title">SETTING CAMPAIGN BOUNDARIES</span>
+                    </div>
+                    <p class="section-instruction">Define the geographic scope of your campaign. Select the target regions, districts, chiefdoms, and wards. Use the hierarchical selection tool: First select Region → then District → then Chiefdom → finally Ward/Village. You can select multiple locations at each level.</p>
+                    <div class="image-container">
+                        <img src="Step 7.png" alt="Step 7 - Campaign Boundaries">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Cross-reference your selection with the national org unit hierarchy in DHIS2 to ensure alignment.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(6)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(8)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 8 -->
+                <div class="section-content" id="section-8">
+                    <div class="section-header">
+                        <span class="section-number">8</span>
+                        <span class="section-title">DEFINING TARGET POPULATION</span>
+                    </div>
+                    <p class="section-instruction">Enter the target population data for your campaign. Configure: Total households, Total population, Children under 5, Pregnant women, and Population per net ratio. Import population data from CSV or enter manually by location.</p>
+                    <div class="image-container">
+                        <img src="Step 8.png" alt="Step 8 - Target Population">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Use the most recent census or projection data from Statistics Sierra Leone for accurate targeting.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(7)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(9)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 9 -->
+                <div class="section-content" id="section-9">
+                    <div class="section-header">
+                        <span class="section-number">9</span>
+                        <span class="section-title">CONFIGURING REGISTRATION POINTS</span>
+                    </div>
+                    <p class="section-instruction">Set up registration points where beneficiaries will be registered. Click 'Add Registration Point' and enter: Point Name, GPS Coordinates, Operating Hours, and Assigned Staff. Registration points can be health facilities, schools, or community centers.</p>
+                    <div class="image-container">
+                        <img src="Step 9.png" alt="Step 9 - Registration Points">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Ensure each registration point has mobile network coverage for real-time data sync.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(8)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(10)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 10 -->
+                <div class="section-content" id="section-10">
+                    <div class="section-header">
+                        <span class="section-number">10</span>
+                        <span class="section-title">SETTING UP DISTRIBUTION SITES</span>
+                    </div>
+                    <p class="section-instruction">Configure ITN distribution sites separate from registration. For each site, enter: Site Name, Location (GPS), Storage Capacity, Distribution Schedule, and Site Supervisor. Link distribution sites to their corresponding registration points.</p>
+                    <div class="image-container">
+                        <img src="Step 10.png" alt="Step 10 - Distribution Sites">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Position distribution sites within 5km of most households to maximize accessibility.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(9)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(11)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 11 -->
+                <div class="section-content" id="section-11">
+                    <div class="section-header">
+                        <span class="section-number">11</span>
+                        <span class="section-title">CONFIGURING ITN STOCK MANAGEMENT</span>
+                    </div>
+                    <p class="section-instruction">Set up the stock management module. Configure: Initial Stock Levels, Buffer Stock Percentage (recommended 10%), Minimum Reorder Level, and Stock Transfer Rules. Enable real-time stock tracking and configure low-stock alerts.</p>
+                    <div class="image-container">
+                        <img src="Step 11.png" alt="Step 11 - Stock Management">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Set up SMS alerts for stock levels below 20% to ensure timely replenishment.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(10)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(12)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 12 -->
+                <div class="section-content" id="section-12">
+                    <div class="section-header">
+                        <span class="section-number">12</span>
+                        <span class="section-title">CREATING USER ACCOUNTS</span>
+                    </div>
+                    <p class="section-instruction">Navigate to 'User Management' → 'Create User'. For each user enter: Full Name, Username, Email, Phone Number, Organization Unit assignment, and Temporary Password. Create accounts for: Campaign Managers, Site Supervisors, Registration Clerks, and Data Entry Staff.</p>
+                    <div class="image-container">
+                        <img src="Step 12.png" alt="Step 12 - User Accounts">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Use email addresses following a standard format: firstname.lastname@domain.org for easy identification.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(11)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(13)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 13 -->
+                <div class="section-content" id="section-13">
+                    <div class="section-header">
+                        <span class="section-number">13</span>
+                        <span class="section-title">ASSIGNING USER ROLES</span>
+                    </div>
+                    <p class="section-instruction">Configure role-based access control. Available roles include: Campaign Administrator (full access), Site Manager (site-level access), Registration Clerk (registration only), Distribution Agent (distribution only), and Viewer (read-only). Assign appropriate roles based on job responsibilities.</p>
+                    <div class="image-container">
+                        <img src="Step 13.png" alt="Step 13 - User Roles">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Follow the principle of least privilege - only grant the minimum permissions required for each role.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(12)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(14)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 14 -->
+                <div class="section-content" id="section-14">
+                    <div class="section-header">
+                        <span class="section-number">14</span>
+                        <span class="section-title">CONFIGURING MOBILE APP SETTINGS</span>
+                    </div>
+                    <p class="section-instruction">Configure the mobile application for field data collection. Go to 'Settings' → 'Mobile Configuration'. Set: Data Collection Forms, Validation Rules, GPS Accuracy Threshold (≤10 meters), Photo Requirements, and Offline Data Retention Period.</p>
+                    <div class="image-container">
+                        <img src="Step 14.png" alt="Step 14 - Mobile App Settings">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Test the mobile configuration on multiple device types before deploying to field teams.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(13)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(15)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 15 -->
+                <div class="section-content" id="section-15">
+                    <div class="section-header">
+                        <span class="section-number">15</span>
+                        <span class="section-title">SETTING UP OFFLINE SYNC</span>
+                    </div>
+                    <p class="section-instruction">Configure offline functionality for areas with poor connectivity. Enable: Offline Mode, set Sync Interval (recommended: 30 minutes when online), configure Conflict Resolution Rules, and set Maximum Offline Storage Period (recommended: 7 days).</p>
+                    <div class="image-container">
+                        <img src="Step 15.png" alt="Step 15 - Offline Sync">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Train field staff on manual sync procedures for areas with intermittent connectivity.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(14)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(16)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 16 -->
+                <div class="section-content" id="section-16">
+                    <div class="section-header">
+                        <span class="section-number">16</span>
+                        <span class="section-title">CONFIGURING BENEFICIARY REGISTRATION</span>
+                    </div>
+                    <p class="section-instruction">Set up the beneficiary registration workflow. Configure required fields: Household ID, Head of Household Name, GPS Location, Number of Household Members, Sleeping Spaces, Existing Nets, and Vulnerability Status. Enable biometric capture if available.</p>
+                    <div class="image-container">
+                        <img src="Step 16.png" alt="Step 16 - Beneficiary Registration">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Include a photo capture field for household verification during distribution.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(15)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(17)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 17 -->
+                <div class="section-content" id="section-17">
+                    <div class="section-header">
+                        <span class="section-number">17</span>
+                        <span class="section-title">SETTING UP HOUSEHOLD TARGETING</span>
+                    </div>
+                    <p class="section-instruction">Configure household targeting criteria. Set: Nets per sleeping space ratio (typically 1:2), Maximum nets per household, Priority scoring for vulnerable households (pregnant women, children under 5), and Geographic targeting rules.</p>
+                    <div class="image-container">
+                        <img src="Step 17.png" alt="Step 17 - Household Targeting">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Align targeting criteria with WHO guidelines and national ITN distribution policies.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(16)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(18)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 18 -->
+                <div class="section-content" id="section-18">
+                    <div class="section-header">
+                        <span class="section-number">18</span>
+                        <span class="section-title">CONFIGURING ITN ALLOCATION RULES</span>
+                    </div>
+                    <p class="section-instruction">Define how nets are allocated to beneficiaries. Configure: Base Allocation Formula (e.g., Household Members / 2, rounded up), Maximum Allocation Cap, Replacement Rules for existing damaged nets, and Special Allocation for health facilities.</p>
+                    <div class="image-container">
+                        <img src="Step 18.png" alt="Step 18 - ITN Allocation Rules">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Test allocation rules with sample data to verify correct calculations before go-live.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(17)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(19)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 19 -->
+                <div class="section-content" id="section-19">
+                    <div class="section-header">
+                        <span class="section-number">19</span>
+                        <span class="section-title">SETTING DISTRIBUTION WORKFLOW</span>
+                    </div>
+                    <p class="section-instruction">Configure the end-to-end distribution workflow: Registration → Verification → Allocation Calculation → Net Issuance → Receipt Confirmation → SMS Notification. Set approval requirements for high-value allocations and exception handling procedures.</p>
+                    <div class="image-container">
+                        <img src="Step 19.png" alt="Step 19 - Distribution Workflow">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Build in a verification step to cross-check registration data before net distribution.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(18)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(20)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 20 -->
+                <div class="section-content" id="section-20">
+                    <div class="section-header">
+                        <span class="section-number">20</span>
+                        <span class="section-title">CONFIGURING REPORTS & DASHBOARDS</span>
+                    </div>
+                    <p class="section-instruction">Set up monitoring dashboards and reports. Create: Daily Registration Summary, Distribution Progress by Location, Stock Status Report, Coverage Map, and Campaign KPI Dashboard. Configure automated report generation and distribution schedules.</p>
+                    <div class="image-container">
+                        <img src="Step 20.png" alt="Step 20 - Reports & Dashboards">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Schedule daily summary reports to be sent automatically to campaign managers at 6:00 PM.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(19)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(21)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 21 -->
+                <div class="section-content" id="section-21">
+                    <div class="section-header">
+                        <span class="section-number">21</span>
+                        <span class="section-title">SETTING UP SMS NOTIFICATIONS</span>
+                    </div>
+                    <p class="section-instruction">Configure SMS notifications for key events. Set up messages for: Registration Confirmation, Distribution Appointment Reminder, Net Collection Reminder, and Campaign Updates. Configure SMS gateway integration and message templates.</p>
+                    <div class="image-container">
+                        <img src="Step 21.png" alt="Step 21 - SMS Notifications">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Keep SMS messages under 160 characters to avoid splitting across multiple texts.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(20)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(22)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 22 -->
+                <div class="section-content" id="section-22">
+                    <div class="section-header">
+                        <span class="section-number">22</span>
+                        <span class="section-title">QUALITY ASSURANCE CONFIGURATION</span>
+                    </div>
+                    <p class="section-instruction">Set up quality assurance checkpoints. Configure: Data Validation Rules, Duplicate Detection Settings, GPS Accuracy Requirements, Photo Quality Standards, and Supervisor Verification Requirements. Enable random sampling for quality audits.</p>
+                    <div class="image-container">
+                        <img src="Step 22.png" alt="Step 22 - Quality Assurance">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Set duplicate detection to flag households within 50 meters with similar names.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(21)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(23)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 23 -->
+                <div class="section-content" id="section-23">
+                    <div class="section-header">
+                        <span class="section-number">23</span>
+                        <span class="section-title">TESTING THE CONFIGURATION</span>
+                    </div>
+                    <p class="section-instruction">Thoroughly test all configured components. Create test households, run through complete registration and distribution workflow, verify reports generate correctly, test mobile app functionality including offline mode, and confirm SMS notifications are delivered.</p>
+                    <div class="image-container">
+                        <img src="Step 23.png" alt="Step 23 - Testing">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Use a dedicated test campaign with test data - never test with production data.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(22)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(24)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 24 -->
+                <div class="section-content" id="section-24">
+                    <div class="section-header">
+                        <span class="section-number">24</span>
+                        <span class="section-title">GOING LIVE CHECKLIST</span>
+                    </div>
+                    <p class="section-instruction">Complete the pre-launch checklist: All user accounts created and tested, Mobile apps deployed to field devices, Stock loaded into system, All distribution sites configured, Dashboards verified, Communication materials prepared, and Backup procedures confirmed.</p>
+                    <div class="image-container">
+                        <img src="Step 24.png" alt="Step 24 - Go-Live Checklist">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Schedule go-live for early week (Monday/Tuesday) to allow time for issue resolution.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(23)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(25)">NEXT →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 25 -->
+                <div class="section-content" id="section-25">
+                    <div class="section-header">
+                        <span class="section-number">25</span>
+                        <span class="section-title">TROUBLESHOOTING COMMON ISSUES</span>
+                    </div>
+                    <p class="section-instruction">Know how to resolve common issues: Login failures (reset password, check account status), Sync errors (check internet connection, clear app cache), Duplicate records (use merge function), Stock discrepancies (run reconciliation report), and Report errors (verify date ranges and filters).</p>
+                    <div class="image-container">
+                        <img src="Step 25.png" alt="Step 25 - Troubleshooting">
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-label">💡 TIP</div>
+                        <div class="tip-text">Document all issues and resolutions in the campaign log for future reference.</div>
+                    </div>
+                    <div class="navigation-buttons">
+                        <button class="btn-nav btn-toc" onclick="goToSection(0)">📋 CONTENTS</button>
+                        <button class="btn-nav btn-back" onclick="goToSection(24)">← BACK</button>
+                        <button class="btn-nav btn-next" onclick="goToSection(0)">✓ FINISH</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="page-footer">
+            <p style="margin: 0;">National Malaria Control Programme</p>
+            <p>Ministry of Health and Sanitation, Sierra Leone</p>
+            <p style="font-size: 11px;">Medical Stores Compound, Freetown, Sierra Leone</p>
+            <p style="font-size: 10px;">© 2025 Informatics Consultancy Firm-Sierra Leone (ICF-SL)</p>
+        </div>
+    </div>
+
+    <script>
+        const totalSections = 25;
+        let currentSection = 0;
+
+        // Initialize step indicator dots
+        function initStepIndicator() {
+            const indicator = document.getElementById('stepIndicator');
+            let html = '';
+            for (let i = 1; i <= totalSections; i++) {
+                html += `<div class="step-dot" id="dot-${i}" onclick="goToSection(${i})" title="Step ${i}"></div>`;
+            }
+            indicator.innerHTML = html;
+        }
+
+        // Update progress bar and step indicator
+        function updateProgress() {
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            
+            if (currentSection === 0) {
+                progressFill.style.width = '0%';
+                progressText.textContent = 'TABLE OF CONTENTS';
+            } else {
+                const progress = (currentSection / totalSections) * 100;
+                progressFill.style.width = progress + '%';
+                progressText.textContent = `STEP ${currentSection} OF ${totalSections}`;
+            }
+
+            // Update step dots
+            for (let i = 1; i <= totalSections; i++) {
+                const dot = document.getElementById(`dot-${i}`);
+                dot.classList.remove('active', 'completed');
+                if (i === currentSection) {
+                    dot.classList.add('active');
+                } else if (i < currentSection) {
+                    dot.classList.add('completed');
+                }
+            }
+        }
+
+        // Go to specific section
+        function goToSection(sectionNum) {
+            // Hide all sections
+            document.querySelectorAll('.section-content').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show target section
+            const targetSection = document.getElementById(`section-${sectionNum}`);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                currentSection = sectionNum;
+                updateProgress();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initStepIndicator();
+            updateProgress();
+        });
+    </script>
+</body>
+</html>
